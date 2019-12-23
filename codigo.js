@@ -18,10 +18,24 @@ $('#formlogin').submit(function(e){
             data: {usuario:usuario,contrasena:contrasena},
             success:function(data){
                 if(data == "null"){
-
-                }else{}
+                    Swal.fire({
+                        type:`error`,
+                        title:`Usuario y/o contraseña`,
+                    });
+                }else{
+                    Swal.fire({
+                        type:`success`,
+                        title:`Conexion Exitosa`,
+                        confirmButtonColor:`#343a40`,
+                        confirmButtonText:`Ingrsar`
+                    }).then((result) => {
+                        if(result.value){
+                            window.location.href="vistas/landingpage.php";
+                        }
+                    })
+                }
             }
-        })
+        });
     }
 
 });
